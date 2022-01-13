@@ -47,12 +47,18 @@ function App({ state, fetchCoins }) {
                     {item.name}
                     <div style={{ marginLeft: "40px" }}>{item.symbol}</div>
                   </td>
-                  <td>{Number(item.priceUsd).toFixed(2)}</td>
-                  <td>{Number(item.marketCapUsd).toFixed(2)}</td>
-                  <td>{Number(item.vwap24Hr).toFixed(2)}</td>
+                  <td>{Number(item.priceUsd).toFixed(2).toString() + "$"}</td>
+                  <td>
+                    {Number(item.marketCapUsd).toFixed(2).toString() + "$"}
+                  </td>
+                  <td>{Number(item.vwap24Hr).toFixed(2).toString() + "$"}</td>
                   <td>{Number(item.supply).toFixed(2)}</td>
-                  <td>{Number(item.volumeUsd24Hr).toFixed(2)}</td>
-                  <td>{Number(item.changePercent24Hr).toFixed(2)}</td>
+                  <td>
+                    {Number(item.volumeUsd24Hr).toFixed(2).toString() + "$"}
+                  </td>
+                  <td>
+                    {Number(item.changePercent24Hr).toFixed(2).toString() + "%"}
+                  </td>
                 </tr>
               ))}
           </tbody>
