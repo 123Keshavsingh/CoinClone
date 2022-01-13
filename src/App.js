@@ -7,6 +7,7 @@ import { Table, Button, Container } from "react-bootstrap";
 function App({ state, fetchCoins }) {
   console.log(state, "userData");
   let [loadingLength, setLoadingLength] = useState(50);
+  let [loadStatus, setLoadStatus] = useState(false);
   const coinData = state.coins;
   const handleLoadingLength = () => {
     setLoadingLength(loadingLength + 50);
@@ -14,6 +15,12 @@ function App({ state, fetchCoins }) {
   useEffect(() => {
     fetchCoins();
   }, []);
+  useEffect(() => {
+    if (loadingLength === coinData.length) {
+      setLoadStatus(true);
+    }
+  }, [loadingLength]);
+
   return (
     <Container style={{ maxWidth: "95%" }}>
       <div>
@@ -69,6 +76,8 @@ function App({ state, fetchCoins }) {
             marginRight: "50%",
             marginBottom: "5px",
           }}
+          variant="outline-success"
+          disabled={loadStatus}
           onClick={handleLoadingLength}
         >
           LoadMore
